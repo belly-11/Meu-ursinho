@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para o meu Ursinho 🧸❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pacifico&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Fredoka', sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, #ff8a9b 0%, transparent 25%),
+        radial-gradient(circle at 80% 80%, #ffb3bd 0%, transparent 25%),
+        linear-gradient(135deg, #7b0012, #d90429, #ff4d6d);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* =========================
+   CORAÇÕES FLUTUANTES
+========================= */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255,255,255,.7);
+    animation: subir linear infinite;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.card {
+    width: min(92%, 650px);
+    min-height: 520px;
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 2px solid rgba(255,255,255,.25);
+    border-radius: 35px;
+    padding: 45px 30px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(70,0,10,.45);
+    animation: entrada .8s ease;
+}
+
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   URSINHO
+========================= */
+
+.bear {
+    font-size: 100px;
+    animation: ursinho 2s ease-in-out infinite;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,.2));
+}
+
+@keyframes ursinho {
+    0%,100% {
+        transform: rotate(-5deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(5deg) translateY(-12px);
+    }
+}
+
+.small-bear {
+    font-size: 55px;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(34px, 8vw, 55px);
+    margin: 10px 0 15px;
+    text-shadow: 3px 4px 0 rgba(100,0,15,.25);
+}
+
+h2 {
+    font-size: clamp(25px, 6vw, 35px);
+    margin: 20px 0;
+}
+
+p {
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.subtitle {
+    opacity: .95;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 28px;
+    border-radius: 50px;
+    transition: .25s ease;
+}
+
+.start-btn {
+    background: white;
+    color: #d90429;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.start-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,.3);
+}
+
+.answers {
+    display: grid;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.answer {
+    width: 100%;
+    background: rgba(255,255,255,.93);
+    color: #8b0015;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+}
+
+.answer:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: #fff;
+}
+
+/* =========================
+   PROGRESSO
+========================= */
+
+.progress-area {
+    margin-bottom: 25px;
+}
+
+.progress-text {
+    font-size: 15px;
+    margin-bottom: 8px;
+    opacity: .9;
+}
+
+.progress {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,.25);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 10%;
+    background: white;
+    border-radius: 20px;
+    transition: .5s ease;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(35px, 9vw, 58px);
+}
+
+.final-message {
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.final-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.yes-btn {
+    background: white;
+    color: #d90429;
+    min-width: 130px;
+}
+
+.no-btn {
+    background: rgba(255,255,255,.2);
+    color: white;
+    min-width: 130px;
+    border: 2px solid rgba(255,255,255,.5);
+}
+
+/* =========================
+   CONFETES
+========================= */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 18px;
+    z-index: 10;
+    animation: confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* =========================
+   ESCONDER
+========================= */
+
+.hidden {
+    display: none;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:500px) {
+    .card {
+        padding: 35px 20px;
+        min-height: 500px;
+    }
+
+    .bear {
+        font-size: 75px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+
+    <div class="card" id="card">
+
+        <!-- TELA INICIAL -->
+        <section id="start">
+
+            <div class="bear">🧸</div>
+
+            <h1>Para o meu Ursinho ❤️</h1>
+
+            <p class="subtitle">
+                Eu preparei uma coisinha para você...
+                <br>
+                Mas antes você vai precisar responder algumas perguntinhas. 👀
+            </p>
+
+            <button class="start-btn" onclick="startGame()">
+                Começar o joguinho 💕
+            </button>
+
+        </section>
+
+
+        <!-- JOGO -->
+        <section id="game" class="hidden">
+
+            <div class="small-bear">🧸</div>
+
+            <div class="progress-area">
+
+                <div class="progress-text" id="progressText">
+                    Pergunta 1 de 10
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+            </div>
+
+            <h2 id="question"></h2>
+
+            <div class="answers" id="answers"></div>
+
+        </section>
+
+
+        <!-- FINAL -->
+        <section id="final" class="hidden">
+
+            <div class="bear">🧸❤️</div>
+
+            <h1 class="final-title">
+                Espera...
+            </h1>
+
+            <p class="final-message">
+                Depois de responder tudo isso,
+                acho que chegou a hora da pergunta mais importante. 👀
+                <br><br>
+
+                Prometo que é uma pergunta simples...
+                mas a resposta pode mudar tudo. ❤️
+            </p>
+
+            <button class="start-btn" onclick="showProposal()">
+                Tem mais uma? 😳
+            </button>
+
+        </section>
+
+
+        <!-- PEDIDO -->
+        <section id="proposal" class="hidden">
+
+            <div class="bear">🧸💖</div>
+
+            <h1 class="final-title">
+                Ursinho...
+            </h1>
+
+            <p class="final-message">
+
+                Você apareceu e, de algum jeito,
+                conseguiu deixar meus dias muito mais especiais. ❤️
+
+                <br><br>
+
+                E como eu já estou cansada de fingir que não gosto
+                de você...
+
+                <br><br>
+
+                <strong>
+                    quer namorar comigo? 🥺❤️
+                </strong>
+
+                <br><br>
+
+                — da sua futura namorada,
+                <strong>minha gatinha</strong> 🐱💕
+
+            </p>
+
+            <div class="final-buttons">
+
+                <button class="yes-btn" onclick="accepted()">
+                    SIM! ❤️
+                </button>
+
+                <button class="no-btn" onclick="noAnswer()">
+                    NÃO 😳
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACEITOU -->
+        <section id="accepted" class="hidden">
+
+            <div class="bear">🧸💖🧸</div>
+
+            <h1 class="final-title">
+                EU SABIA! 😭❤️
+            </h1>
+
+            <p class="final-message">
+
+                AGORA É OFICIAL! 💍❤️
+
+                <br><br>
+
+                Você acaba de ser promovido de
+                <strong>“meu Ursinho”</strong>
+                para
+                <strong>“meu namorado”</strong>. 😌💕
+
+                <br><br>
+
+                Vem cá que eu tenho um beijo guardado
+                para você. 😳💋
+
+            </p>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PERGUNTAS
+========================= */
+
+const questions = [
+
+    {
+        question: "Primeira pergunta... você gosta de conversar comigo? 👀",
+        answers: [
+            "Sim, muito ❤️",
+            "Até demais 😳",
+            "Só quando você fala comigo primeiro 😂",
+            "Talvez eu goste mais do que deveria..."
+        ]
+    },
+
+    {
+        question: "Se eu te chamasse para um encontro só nós dois... você iria? 👀",
+        answers: [
+            "Com certeza ❤️",
+            "Depende do lugar 😏",
+            "Eu iria correndo 😂",
+            "Só se tiver comida"
+        ]
+    },
+
+    {
+        question: "Quando aparece uma mensagem minha, qual é sua reação? 📱",
+        answers: [
+            "Abro na hora 😳",
+            "Sorrio igual bobo(a) ❤️",
+            "Finjo que não estou esperando 😂",
+            "Fico pensando no que responder"
+        ]
+    },
+
+    {
+        question: "Você acha que nós dois combinamos? 🥰",
+        answers: [
+            "Demais ❤️",
+            "Um pouquinho...",
+            "Mais do que eu gostaria de admitir 👀",
+            "Acho que sim 😳"
+        ]
+    },
+
+    {
+        question: "Se eu te desse um abraço bem apertado agora, você faria o quê? 🧸",
+        answers: [
+            "Abraçaria de volta ❤️",
+            "Não soltaria mais",
+            "Ficaria com vergonha 😳",
+            "Te apertaria ainda mais"
+        ]
+    },
+
+    {
+        question: "Agora uma pergunta perigosa... você acha que eu sou bonita? 👀",
+        answers: [
+            "Muito ❤️",
+            "Você sabe que sim 😏",
+            "Bonita é pouco",
+            "Próxima pergunta antes que eu me entregue 😂"
+        ]
+    },
+
+    {
+        question: "Se eu dissesse que estou com saudade de você... 👀",
+        answers: [
+            "Eu diria que também estou ❤️",
+            "Iria te ver",
+            "Mandaria um abraço virtual 🫂",
+            "Fingiria que não fiquei feliz 😳"
+        ]
+    },
+
+    {
+        question: "Você me daria um beijo se eu pedisse? 😳💋",
+        answers: [
+            "Sim ❤️",
+            "Um só? 👀",
+            "Talvez...",
+            "Eu pediria outro depois"
+        ]
+    },
+
+    {
+        question: "Você acha que existe uma química entre nós? 🔥",
+        answers: [
+            "Com certeza 😏",
+            "Tem até demais",
+            "Eu sinto alguma coisa ❤️",
+            "Você está tentando me fazer confessar, né? 😂"
+        ]
+    },
+
+    {
+        question: "Última pergunta antes da surpresa... você gosta de mim? ❤️",
+        answers: [
+            "Sim ❤️",
+            "Muito.",
+            "Mais do que deveria 😳",
+            "Acho que você já sabe a resposta..."
+        ]
+    }
+
+];
+
+let currentQuestion = 0;
+
+
+/* =========================
+   INICIAR
+========================= */
+
+function startGame() {
+
+    document.getElementById("start").classList.add("hidden");
+
+    document.getElementById("game").classList.remove("hidden");
+
+    showQuestion();
+
+}
+
+
+/* =========================
+   MOSTRAR PERGUNTA
+========================= */
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question").innerText = q.question;
+
+    document.getElementById("progressText").innerText =
+        `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+
+    document.getElementById("progressBar").style.width =
+        `${((currentQuestion + 1) / questions.length) * 100}%`;
+
+    const answersContainer = document.getElementById("answers");
+
+    answersContainer.innerHTML = "";
+
+    q.answers.forEach(answer => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+
+        button.innerText = answer;
+
+        button.onclick = nextQuestion;
+
+        answersContainer.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================
+   PRÓXIMA
+========================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if(currentQuestion < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        document.getElementById("game").classList.add("hidden");
+
+        document.getElementById("final").classList.remove("hidden");
+
+    }
+
+}
+
+
+/* =========================
+   MOSTRAR PEDIDO
+========================= */
+
+function showProposal() {
+
+    document.getElementById("final").classList.add("hidden");
+
+    document.getElementById("proposal").classList.remove("hidden");
+
+}
+
+
+/* =========================
+   ACEITOU
+========================= */
+
+function accepted() {
+
+    document.getElementById("proposal").classList.add("hidden");
+
+    document.getElementById("accepted").classList.remove("hidden");
+
+    createConfetti();
+
+}
+
+
+/* =========================
+   BOTÃO NÃO
+========================= */
+
+function noAnswer() {
+
+    const button = document.querySelector(".no-btn");
+
+    const messages = [
+        "Tem certeza? 🥺",
+        "Pensa melhor... 👀",
+        "Você vai mesmo clicar nisso? 😭",
+        "Essa resposta não vale 😳",
+        "Tenta de novo ❤️"
+    ];
+
+    button.innerText =
+        messages[Math.floor(Math.random() * messages.length)];
+
+    button.style.transform =
+        `translate(${Math.random()*100-50}px, ${Math.random()*60-30}px)`;
+
+}
+
+
+/* =========================
+   CORAÇÕES
+========================= */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const hearts = ["❤️","💕","💗","💖","💘","💝"];
+
+    heart.innerText =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 12000);
+
+}
+
+setInterval(createHeart, 500);
+
+
+/* =========================
+   CONFETES
+========================= */
+
+function createConfetti() {
+
+    const colors = [
+        "#ffffff",
+        "#ffccd5",
+        "#ff4d6d",
+        "#ffd166",
+        "#ff8fab"
+    ];
+
+    for(let i = 0; i < 120; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+        piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        piece.style.transform =
+            `rotate(${Math.random()*360}deg)`;
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 6000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
